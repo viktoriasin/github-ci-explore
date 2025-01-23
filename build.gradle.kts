@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    jacoco
 }
 
 group = "ru.sinvic"
@@ -17,4 +18,9 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+    finalizedBy(tasks.jacocoTestReport)
+}
+
+tasks.jacocoTestReport {
+    dependsOn(tasks.test) // tests are required to run before generating the report
 }

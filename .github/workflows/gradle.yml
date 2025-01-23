@@ -26,3 +26,13 @@ jobs:
       if: success() || failure()
       with:
         report_paths: '**/build/test-results/test/TEST-*.xml'
+    - name: Add coverage to PR
+      id: jacoco
+      uses: madrapps/jacoco-report@v1.7.1
+      with:
+        paths: |
+          ${{ github.workspace }}/**/build/reports/jacoco/prodNormalDebugCoverage/prodNormalDebugCoverage.xml,
+          ${{ github.workspace }}/**/build/reports/jacoco/**/debugCoverage.xml
+        token: ${{ secrets.GITHUB_TOKEN }}
+        min-coverage-overall: 40
+        min-coverage-changed-files: 60
