@@ -15,7 +15,7 @@ jobs:
     - name: Setup Java
       uses: actions/setup-java@v4
       with:
-        distribution: 'aarch64'
+        distribution: 'oracle'
         java-version: 21
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v4
