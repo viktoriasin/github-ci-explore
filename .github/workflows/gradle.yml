@@ -20,9 +20,9 @@ jobs:
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v4
     - name: Build with Gradle
-      run: ./gradlew build
+      run: ./gradlew test
     - name: Summarize tests results
-      uses: ctrf-io/github-test-reporter@v1
+      uses: mikepenz/action-junit-report@v5
+      if: success() || failure()
       with:
-        report-path: './ctrf/*.json'
-      if: always()
+        report_paths: '**/build/test-results/test/TEST-*.xml'
