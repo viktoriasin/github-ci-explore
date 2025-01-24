@@ -3,6 +3,7 @@ package ru.sinvic;
 import java.util.stream.DoubleStream;
 
 public class QuadraticEquationSolver {
+
     public double[] solve(double a, double b, double c, double e) {
         if (Math.abs(a) <= e) {
             throw new IllegalArgumentException("a не равно 0.");
@@ -13,20 +14,17 @@ public class QuadraticEquationSolver {
         }
 
         double D = b * b - 4 * a * c;
+
         if (D < -e) {
             return new double[0];
         }
-        double x1;
-        double x2;
+
         if (D > e) {
-            x1 = (-b + Math.sqrt(D)) / (2 * a);
-            x2 = (-b - Math.sqrt(D)) / (2 * a);
-            return new double[] {x1, x2};
+            return new double[]{(-b + Math.sqrt(D)) / (2 * a), (-b - Math.sqrt(D)) / (2 * a)};
         }
 
         if (Math.abs(D) <= e) {
-            x1 = -b / (2 * a);
-            return new double[] {x1};
+            return new double[]{-b / (2 * a)};
         }
         throw new UnsupportedOperationException();
     }

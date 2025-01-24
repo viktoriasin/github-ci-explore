@@ -59,15 +59,19 @@ class QuadraticEquationSolverTest {
 
     @Test
     void testAZero() {
-        assertThrows(IllegalArgumentException.class,
+        Exception exception = assertThrows(IllegalArgumentException.class,
                 () -> quadraticEquationSolver.solve(1e-7, 2.0, 1.0, 1e-5));
+        String a_ZERO = "a не равно 0.";
+        assertEquals(exception.getMessage(), a_ZERO);
     }
 
     @ParameterizedTest
     @MethodSource("generateData")
     public void testWrongDouble(double a, double b, double c) {
-        assertThrows(IllegalArgumentException.class,
+        Exception exception = assertThrows(IllegalArgumentException.class,
                 () -> quadraticEquationSolver.solve(a, b, c, 1e-5));
+        String WRONG_DOUBLE = "коэффициенты должны быть числами.";
+        assertEquals(exception.getMessage(), WRONG_DOUBLE);
     }
 
 
