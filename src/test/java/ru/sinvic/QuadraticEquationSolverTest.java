@@ -11,4 +11,10 @@ class QuadraticEquationSolverTest {
         QuadraticEquationSolver quadraticEquationSolver = new QuadraticEquationSolver();
         assertEquals(quadraticEquationSolver.sum(2, 2), 4);
     }
+
+    @Test
+    void testMinus() {
+        QuadraticEquationSolver quadraticEquationSolver = new QuadraticEquationSolver();
+        assertEquals(quadraticEquationSolver.minus(3, 2), 1);
+    }
 }
