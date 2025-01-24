@@ -8,6 +8,9 @@ on:
 
 jobs:
   build:
+    permissions:
+      checks: write
+      pull-requests: write
     runs-on: macos-latest
     steps:
     - name: Checkout sources
@@ -26,6 +29,9 @@ jobs:
       if: success() || failure()
       with:
         report_paths: '**/build/test-results/test/TEST-*.xml'
+        comment: true
+        detailed_summary: true
+        include_passed: true
     - name: Add coverage to PR
       id: jacoco
       uses: madrapps/jacoco-report@v1.7.1
