@@ -9,6 +9,7 @@ class QuadraticEquationSolverTest {
     @Test
     void testSum() {
         QuadraticEquationSolver quadraticEquationSolver = new QuadraticEquationSolver();
+
         assertEquals(quadraticEquationSolver.sum(2, 2), 4);
     }
 }
