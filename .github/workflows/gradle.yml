@@ -43,4 +43,3 @@ jobs:
         min-coverage-overall: 40
         min-coverage-changed-files: 60
         update-comment: true
-        skip-if-no-changes: true
