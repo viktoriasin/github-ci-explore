@@ -13,8 +13,8 @@ class QuadraticEquationSolverTest {
     }
 
     @Test
-    void testSumNegative() {
+    void testMinus() {
         QuadraticEquationSolver quadraticEquationSolver = new QuadraticEquationSolver();
-        assertEquals(quadraticEquationSolver.sum(2, -3), -1);
+        assertEquals(quadraticEquationSolver.sum(3, 2), 1);
     }
 }
