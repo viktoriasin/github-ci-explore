@@ -12,6 +12,8 @@ import java.util.stream.Stream;
 import static java.lang.Double.NaN;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static ru.sinvic.QuadraticEquationSolver.ILLEGAL_A_MESSAGE;
+import static ru.sinvic.QuadraticEquationSolver.NAN_OR_INFINITE_MESSAGE;
 
 
 class QuadraticEquationSolverTest {
@@ -61,8 +63,7 @@ class QuadraticEquationSolverTest {
     void testAZero() {
         Exception exception = assertThrows(IllegalArgumentException.class,
                 () -> quadraticEquationSolver.solve(1e-7, 2.0, 1.0, 1e-5));
-        String a_ZERO = "a не равно 0.";
-        assertEquals(exception.getMessage(), a_ZERO);
+        assertEquals(exception.getMessage(), ILLEGAL_A_MESSAGE);
     }
 
     @ParameterizedTest
@@ -70,9 +71,6 @@ class QuadraticEquationSolverTest {
     public void testWrongDouble(double a, double b, double c) {
         Exception exception = assertThrows(IllegalArgumentException.class,
                 () -> quadraticEquationSolver.solve(a, b, c, 1e-5));
-        String WRONG_DOUBLE = "коэффициенты должны быть числами.";
-        assertEquals(exception.getMessage(), WRONG_DOUBLE);
+        assertEquals(exception.getMessage(), NAN_OR_INFINITE_MESSAGE);
     }
-
-
 }

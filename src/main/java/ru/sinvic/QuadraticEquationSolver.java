@@ -3,14 +3,16 @@ package ru.sinvic;
 import java.util.stream.DoubleStream;
 
 public class QuadraticEquationSolver {
+    final static String ILLEGAL_A_MESSAGE = "a не должно быть равно 0.";
+    final static String NAN_OR_INFINITE_MESSAGE = "коэффициенты должны быть числами.";
 
     public double[] solve(double a, double b, double c, double e) {
         if (Math.abs(a) <= e) {
-            throw new IllegalArgumentException("a не равно 0.");
+            throw new IllegalArgumentException(ILLEGAL_A_MESSAGE);
         }
 
         if (isContainsNaN(a, b, c) || isContainsInfinity(a, b, c)) {
-            throw new IllegalArgumentException("коэффициенты должны быть числами.");
+            throw new IllegalArgumentException(NAN_OR_INFINITE_MESSAGE);
         }
 
         double D = b * b - 4 * a * c;
@@ -23,10 +25,7 @@ public class QuadraticEquationSolver {
             return new double[]{(-b + Math.sqrt(D)) / (2 * a), (-b - Math.sqrt(D)) / (2 * a)};
         }
 
-        if (Math.abs(D) <= e) {
-            return new double[]{-b / (2 * a)};
-        }
-        throw new UnsupportedOperationException();
+        return new double[]{-b / (2 * a)};
     }
 
     private boolean isContainsNaN(double a, double b, double c) {
