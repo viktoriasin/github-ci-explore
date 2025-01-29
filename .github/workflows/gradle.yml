@@ -23,8 +23,6 @@ jobs:
       uses: gradle/actions/setup-gradle@v4
     - name: Build with Gradle
       run: ./gradlew test
-    - name: Run Test Coverage
-      run: ./gradlew jacocoTestReport
     - name: Summarize tests results
       uses: mikepenz/action-junit-report@v5
       if: success() || failure()
